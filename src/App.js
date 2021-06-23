@@ -1,7 +1,8 @@
 import React, { Component } from 'react'; 
-import axios from 'axios';
 
 import ButtonAppBar from './components/AppNavBar';
+import ContaintedButtons from './components/Button'; 
+import FormPropsTextFields from './components/TextField'; 
 
 import './App.css';
 
@@ -10,13 +11,30 @@ class MusicApp extends Component {
     super(props)
 
     this.state = {
+      loggedIn: false
+    }
+  }
 
+  handleLogin = () =>{
+    if(this.state.loggedIn){
+      this.setState({loggedIn: false})
+    }else{
+      this.setState({loggedIn: true})
     }
   }
 
   render(){
     return (
-      <ButtonAppBar/>
+      <div>
+        {this.state.loggedIn ?
+        <h2> You successfully logged in</h2> : 
+        <div className="App">
+          <ButtonAppBar/>
+          <FormPropsTextFields/>
+          <ContaintedButtons clickToLogin={() => {this.handleLogin()}}/>
+        </div>  
+        }
+      </div>
     )
   }
 }
