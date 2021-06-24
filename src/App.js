@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ButtonAppBar from './components/AppNavBar';
 import ContaintedButtons from './components/Button'; 
 import FormPropsTextFields from './components/TextField'; 
+import OutlinedCard from './components/Dashboard'; 
 
 import './App.css';
 
@@ -11,7 +12,8 @@ class MusicApp extends Component {
     super(props)
 
     this.state = {
-      loggedIn: false
+      loggedIn: false,
+      online: false
     }
   }
 
@@ -23,17 +25,25 @@ class MusicApp extends Component {
     }
   }
 
+  handleSwitchClick = () =>{
+    if(this.state.online){
+      this.setState({online: false})
+    }else{
+      this.setState({online: true})
+    }
+  }
+
   render(){
     return (
-      <div>
-        {this.state.loggedIn ?
-        <h2> You successfully logged in</h2> : 
-        <div className="App">
+      <div className="App">
           <ButtonAppBar/>
-          <FormPropsTextFields/>
-          <ContaintedButtons clickToLogin={() => {this.handleLogin()}}/>
-        </div>  
-        }
+            {this.state.loggedIn ?
+            <OutlinedCard clickToGoOnline={() => {this.handleSwitchClick()}}/> : 
+          <div>
+            <FormPropsTextFields/>
+            <ContaintedButtons clickToLogin={() => {this.handleLogin()}}/>
+          </div>  
+            }
       </div>
     )
   }
