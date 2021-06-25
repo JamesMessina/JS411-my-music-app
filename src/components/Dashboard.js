@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -39,52 +39,52 @@ const useStyles = makeStyles({
 });
   
 
-export default function OutlinedCard(props) {
-  const classes = useStyles();
-  const { clickToGoOnline } = props; 
-  const [value, setValue] = React.useState(20);
-  const [qual, setQual] = React.useState(''); 
+class Dashboard extends Component {
+  constructor(props){
+    super(props)
 
-  const handleVolChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  const handleQualChange = (e) =>{
-    setQual(e.target.value)
+    this.state = {
+      volume: 20,
+      quality: 2 //normal 
+    }
   }
 
-  return (
-    <div>
-        <h1 className={classes.header}>Welcome User!</h1>
-        <div className={classes.body}>
-            <Card className={classes.root} variant="outlined">
-                <CardContent>
+
+  render(){
+    const classes = useStyles();
+    const { clickToGoOnline } = props; 
+    return (
+      <div>
+          <h1 className={classes.header}>Welcome User!</h1>
+          <div className={classes.body}>
+              <Card className={classes.root} variant="outlined">
+                  <CardContent>
                     <Typography variant="h5" component="h2">
                     Online Mode 
                     </Typography><br></br>
                     <Typography variant="body2" component="p">
                     Is this application connected to the internet?
                     </Typography>
-                </CardContent>
-                <CardActions>
+                  </CardContent>
+                  <CardActions>
                     <Switch
                         onChange={() => {clickToGoOnline()}}
                         color="primary"
                         name="checkedB"
                         inputProps={{ 'aria-label': 'primary checkbox' }}
                     />
-                </CardActions>
-            </Card>
-            <Card className={classes.root} variant="outlined">
-                <CardContent>
-                    <Typography variant="h5" component="h2">
-                    Master Volume
-                    </Typography><br></br>
-                    <Typography variant="body2" component="p">
-                    Overrides all other sound settings in this application.
-                    </Typography>
-                </CardContent>
-                <CardActions>
+                  </CardActions>
+              </Card>
+              <Card className={classes.root} variant="outlined">
+                  <CardContent>
+                      <Typography variant="h5" component="h2">
+                      Master Volume
+                      </Typography><br></br>
+                      <Typography variant="body2" component="p">
+                      Overrides all other sound settings in this application.
+                      </Typography>
+                  </CardContent>
+                  <CardActions>
                     <Slider
                         defaultValue={20}
                         volume={value}
@@ -96,29 +96,29 @@ export default function OutlinedCard(props) {
                         min={0}
                         max={100}
                     />
-                </CardActions>
-            </Card>
-            <Card className={classes.root} variant="outlined">
-                <CardContent>
-                    <Typography variant="h5" component="h2">
-                    Sound Quality
-                    </Typography><br></br>
-                    <Typography variant="body2" component="p">
-                    Manually control the music quality in event of poor connection.
+                  </CardActions>
+              </Card>
+              <Card className={classes.root} variant="outlined">
+                  <CardContent>
+                      <Typography variant="h5" component="h2">
+                      Sound Quality
+                      </Typography><br></br>
+                      <Typography variant="body2" component="p">
+                        Manually control the music quality in event of poor connection.
                     </Typography>
-                </CardContent>
-                <CardActions>
+                  </CardContent>
+                  <CardActions>
                     <FormControl className={classes.formControl}>
                     <InputLabel id="demo-simple-select-label">EQ</InputLabel>
                         <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            quality={qual}
-                            onChange={handleQualChange}
-                            >
-                            <MenuItem value={1}>Low</MenuItem>
-                            <MenuItem value={2}>Normal</MenuItem>
-                            <MenuItem value={3}>High</MenuItem>
+                          labelId="demo-simple-select-label"
+                          id="demo-simple-select"
+                          quality={qual}
+                          onChange={(e) => handleQualChange(e)}
+                          >
+                          <MenuItem value={1}>Low</MenuItem>
+                          <MenuItem value={2}>Normal</MenuItem>
+                          <MenuItem value={3}>High</MenuItem>
                         </Select>
                     </FormControl>
                 </CardActions>
@@ -126,5 +126,8 @@ export default function OutlinedCard(props) {
         </div>
         <h3>System Notifications:</h3>
     </div>
-  );
+  )
+  }
 }
+
+export default Dashboard; 

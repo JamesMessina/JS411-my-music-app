@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import ButtonAppBar from './components/AppNavBar';
 import ContaintedButtons from './components/Button'; 
 import FormPropsTextFields from './components/TextField'; 
-import OutlinedCard from './components/Dashboard'; 
+import Dashboard from './components/Dashboard'; 
 
 import './App.css';
 
@@ -38,7 +38,7 @@ class MusicApp extends Component {
       <div className="App">
           <ButtonAppBar/>
             {this.state.loggedIn ?
-            <OutlinedCard clickToGoOnline={() => {this.handleSwitchClick()}}/> : 
+            <Dashboard clickToGoOnline={() => {this.handleSwitchClick()}}/> : 
           <div>
             <FormPropsTextFields/>
             <ContaintedButtons clickToLogin={() => {this.handleLogin()}}/>
