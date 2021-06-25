@@ -41,12 +41,17 @@ const useStyles = makeStyles({
 
 export default function OutlinedCard(props) {
   const classes = useStyles();
-  const { clickToGoOnline, controlQual } = props; 
+  const { clickToGoOnline } = props; 
   const [value, setValue] = React.useState(20);
+  const [qual, setQual] = React.useState(''); 
 
-  const handleChange = (event, newValue) => {
+  const handleVolChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const handleQualChange = (e) =>{
+    setQual(e.target.value)
+  }
 
   return (
     <div>
@@ -83,7 +88,7 @@ export default function OutlinedCard(props) {
                     <Slider
                         defaultValue={20}
                         volume={value}
-                        onChange={handleChange}
+                        onChange={handleVolChange}
                         aria-labelledby="discrete-slider"
                         valueLabelDisplay="auto"
                         step={10}
@@ -108,7 +113,8 @@ export default function OutlinedCard(props) {
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
-                            onChange={(e) => {controlQual(e)}}
+                            quality={qual}
+                            onChange={handleQualChange}
                             >
                             <MenuItem value={1}>Low</MenuItem>
                             <MenuItem value={2}>Normal</MenuItem>
