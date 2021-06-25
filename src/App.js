@@ -13,7 +13,8 @@ class MusicApp extends Component {
 
     this.state = {
       loggedIn: false,
-      online: false
+      online: false,
+      quality: 0
     }
   }
 
@@ -33,12 +34,16 @@ class MusicApp extends Component {
     }
   }
 
+  handleQual = (e) =>{
+    this.setState({quality: e.target.value})
+  }
+
   render(){
     return (
       <div className="App">
           <ButtonAppBar/>
             {this.state.loggedIn ?
-            <OutlinedCard clickToGoOnline={() => {this.handleSwitchClick()}}/> : 
+            <OutlinedCard controlQual={(e) => {this.handleQual(e)}}  clickToGoOnline={() => {this.handleSwitchClick()}}/> : 
           <div>
             <FormPropsTextFields/>
             <ContaintedButtons clickToLogin={() => {this.handleLogin()}}/>

@@ -3,18 +3,17 @@ import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Switch from '@material-ui/core/Switch';
+import Slider from '@material-ui/core/Slider';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
 
 const useStyles = makeStyles({
   root: {
     width: '400px',
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
   },
   title: {
     fontSize: 14,
@@ -33,14 +32,21 @@ const useStyles = makeStyles({
   header: {
     paddingTop: '50px',
     fontStyle: 'italic'
+  },
+  formControl: {
+    minWidth: '375px',
   }
 });
+  
 
 export default function OutlinedCard(props) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-  const { clickToGoOnline } = props; 
-  
+  const { clickToGoOnline, controlQual } = props; 
+  const [value, setValue] = React.useState(20);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <div>
@@ -66,44 +72,49 @@ export default function OutlinedCard(props) {
             </Card>
             <Card className={classes.root} variant="outlined">
                 <CardContent>
-                    <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Word of the Day
-                    </Typography>
                     <Typography variant="h5" component="h2">
-                    be{bull}nev{bull}o{bull}lent
-                    </Typography>
-                    <Typography className={classes.pos} color="textSecondary">
-                    adjective
-                    </Typography>
+                    Master Volume
+                    </Typography><br></br>
                     <Typography variant="body2" component="p">
-                    well meaning and kindly.
-                    <br />
-                    {'"a benevolent smile"'}
+                    Overrides all other sound settings in this application.
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">Learn More</Button>
+                    <Slider
+                        defaultValue={20}
+                        volume={value}
+                        onChange={handleChange}
+                        aria-labelledby="discrete-slider"
+                        valueLabelDisplay="auto"
+                        step={10}
+                        marks
+                        min={0}
+                        max={100}
+                    />
                 </CardActions>
             </Card>
             <Card className={classes.root} variant="outlined">
                 <CardContent>
-                    <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Word of the Day
-                    </Typography>
                     <Typography variant="h5" component="h2">
-                    be{bull}nev{bull}o{bull}lent
-                    </Typography>
-                    <Typography className={classes.pos} color="textSecondary">
-                    adjective
-                    </Typography>
+                    Sound Quality
+                    </Typography><br></br>
                     <Typography variant="body2" component="p">
-                    well meaning and kindly.
-                    <br />
-                    {'"a benevolent smile"'}
+                    Manually control the music quality in event of poor connection.
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    
+                    <FormControl className={classes.formControl}>
+                    <InputLabel id="demo-simple-select-label">EQ</InputLabel>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            onChange={(e) => {controlQual(e)}}
+                            >
+                            <MenuItem value={1}>Low</MenuItem>
+                            <MenuItem value={2}>Normal</MenuItem>
+                            <MenuItem value={3}>High</MenuItem>
+                        </Select>
+                    </FormControl>
                 </CardActions>
             </Card>
         </div>
