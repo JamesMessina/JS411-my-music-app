@@ -12,8 +12,7 @@ class MusicApp extends Component {
     super(props)
 
     this.state = {
-      loggedIn: false,
-      online: false,
+      loggedIn: false
     }
   }
 
@@ -25,20 +24,12 @@ class MusicApp extends Component {
     }
   }
 
-  handleSwitchClick = () =>{
-    if(this.state.online){
-      this.setState({online: false})
-    }else{
-      this.setState({online: true})
-    }
-  }
-
   render(){
     return (
       <div className="App">
           <ButtonAppBar/>
             {this.state.loggedIn ?
-            <Dashboard clickToGoOnline={() => {this.handleSwitchClick()}}/> : 
+            <Dashboard/> : 
           <div>
             <FormPropsTextFields/>
             <ContaintedButtons clickToLogin={() => {this.handleLogin()}}/>
