@@ -204,24 +204,24 @@ class Dashboard extends Component {
           <Typography variant="h3">
             System Notifications:
           </Typography >
-          <p>
+          <Typography>
             {!online ?
               <li>{notifications[0].textMsg}</li> :
               <div></div>
             }
-          </p>
-          <p>
+          </Typography>
+          <Typography>
             {volume >= 80 ?
               <li>{notifications[1].textMsg}</li> :
               <div></div>
             }
-          </p>
-          <p>
+          </Typography>
+          <Typography>
             {quality < 2 ?
               <li>{notifications[2].textMsg}</li> :
               <div></div>
             }
-          </p>
+          </Typography>
         </div>
     </div>
   )

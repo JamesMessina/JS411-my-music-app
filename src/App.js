@@ -1,9 +1,10 @@
 import React, { Component } from 'react'; 
 
-import ButtonAppBar from './components/AppNavBar';
 import ContaintedButtons from './components/Button'; 
 import FormPropsTextFields from './components/TextField'; 
 import Dashboard from './components/Dashboard'; 
+import Signup from './components/Signup'; 
+import SignupButton from './components/SignupButton'
 
 import './App.css';
 
@@ -12,7 +13,8 @@ class MusicApp extends Component {
     super(props)
 
     this.state = {
-      loggedIn: false
+      loggedIn: false,
+      signedUp: false
     }
   }
 
@@ -24,17 +26,27 @@ class MusicApp extends Component {
     }
   }
 
+  handleSignup = () =>{
+    if(this.state.signedUp){
+      this.setState({signedUp: false})
+    }else{
+      this.setState({signedUp: true})
+    }
+  }
+
   render(){
     return (
       <div className="App">
-          <ButtonAppBar/>
-            {this.state.loggedIn ?
-            <Dashboard/> : 
-          <div>
-            <FormPropsTextFields/>
-            <ContaintedButtons clickToLogin={() => {this.handleLogin()}}/>
-          </div>  
-            }
+          {this.state.loggedIn ?
+          <Dashboard/> : 
+            this.state.signedUp ? 
+              <Signup/> :
+                <div>
+                  < FormPropsTextFields/>
+                    <ContaintedButtons clickToLogin={() => {this.handleLogin()}}/>
+                    <SignupButton clickToSignup={() => {this.handleSignup()}}/>
+                </div>
+          }
       </div>
     )
   }
