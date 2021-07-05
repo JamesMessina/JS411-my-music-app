@@ -7,11 +7,13 @@ import { Switch, Route } from 'react-router';
 import Dashboard from './components/Dashboard';
 import Signup from './components/Signup';
 import MusicApp from './App';  
+import WelcomeScreen from './components/Home';
 
 const Router = () =>{
     return (
         <Switch>
-            <Route exact path="/" component={MusicApp}/>
+            <Route exact path="/" component={WelcomeScreen}></Route>
+            <Route path="/login" component={MusicApp}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/dashboard" component={Dashboard}/>
         </Switch>

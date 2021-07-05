@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'; 
 
 
 
@@ -38,6 +39,7 @@ class Signup extends Component {
   render(){
     return (
       <div className="App">
+      <Link to="/login">Back to Login</Link>
       <header className="App-header">
         <p>New Member</p>
         <form onSubmit={(e) => {this.handleSubmit(e)}}>

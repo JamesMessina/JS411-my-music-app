@@ -1,4 +1,5 @@
 import React, { Component } from 'react'; 
+import { Link } from 'react-router-dom'; 
 
 import ContaintedButtons from './components/Button'; 
 import FormPropsTextFields from './components/TextField'; 
@@ -38,13 +39,14 @@ class MusicApp extends Component {
     return (
       <div className="App">
           {this.state.loggedIn ?
-          <Dashboard/> : 
+          <Dashboard/> :
             this.state.signedUp ? 
               <Signup/> :
                 <div>
-                  < FormPropsTextFields/>
-                    <ContaintedButtons clickToLogin={() => {this.handleLogin()}}/>
-                    <SignupButton clickToSignup={() => {this.handleSignup()}}/>
+                  <Link to="/"> Welcome Page</Link>
+                  <FormPropsTextFields/>
+                  <ContaintedButtons clickToLogin={() => {this.handleLogin()}}/>
+                  <SignupButton clickToSignup={() => {this.handleSignup()}}/>
                 </div>
           }
       </div>

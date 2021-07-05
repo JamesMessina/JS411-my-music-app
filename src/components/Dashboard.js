@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'; 
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
@@ -130,6 +131,7 @@ class Dashboard extends Component {
     
     return (
       <div>
+        <Link to="/login">Logout</Link>
           <h1 className={classes.header}>Welcome User!</h1>
           <div className={classes.body}>
               <Card className={classes.root} variant="outlined">
