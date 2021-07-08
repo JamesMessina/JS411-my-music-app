@@ -27,28 +27,15 @@ class MusicApp extends Component {
     }
   }
 
-  handleSignup = () =>{
-    if(this.state.signedUp){
-      this.setState({signedUp: false})
-    }else{
-      this.setState({signedUp: true})
-    }
-  }
-
   render(){
     return (
       <div className="App">
-          {this.state.loggedIn ?
-          <Dashboard/> :
-            this.state.signedUp ? 
-              <Signup/> :
-                <div>
-                  <Link to="/"> Welcome Page</Link>
-                  <FormPropsTextFields/>
-                  <ContaintedButtons clickToLogin={() => {this.handleLogin()}}/>
-                  <SignupButton clickToSignup={() => {this.handleSignup()}}/>
-                </div>
-          }
+          <div>
+              <Link to="/"> Welcome Page</Link>
+              <FormPropsTextFields/>
+              <Link to="/dashboard">Login</Link><br></br>
+              <Link to="/signup">Sign Up</Link>
+          </div>
       </div>
     )
   }

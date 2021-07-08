@@ -12,7 +12,7 @@ import WelcomeScreen from './components/Home';
 const Router = () =>{
     return (
         <Switch>
-            <Route exact path="/" component={WelcomeScreen}></Route>
+            <Route exact path="/" component={WelcomeScreen}/>
             <Route path="/login" component={MusicApp}/>
             <Route path="/signup" component={Signup}/>
             <Route path="/dashboard" component={Dashboard}/>
