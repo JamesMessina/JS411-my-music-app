@@ -1,21 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { BrowserRouter } from 'react-router-dom';
-import Router from './Router';
-import ButtonAppBar from './components/AppNavBar'; 
 import reportWebVitals from './reportWebVitals';
+import MusicApp from './App'
 
-const Main = () =>(
-  <BrowserRouter>
-    <ButtonAppBar/>
-    <Router/>
-  </BrowserRouter>
-)
 
 ReactDOM.render(
   <React.StrictMode>
-    <Main />
+    <MusicApp/>
   </React.StrictMode>,
   document.getElementById('root')
 );

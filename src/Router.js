@@ -6,7 +6,7 @@ import { Switch, Route, Redirect } from 'react-router';
 
 import Dashboard from './components/Dashboard';
 import Signup from './components/Signup';
-import MusicApp from './App';  
+import Login from './components/Login'
 import WelcomeScreen from './components/Home';
 
 const checkAuth = () =>{
@@ -32,7 +32,7 @@ const Router = () =>{
     return (
         <Switch>
             <Route exact path="/" component={WelcomeScreen}/>
-            <Route path="/login" component={MusicApp}/>
+            <Route path="/login" component={Login}/>
             <Route path="/signup" component={Signup}/>
             <ProtectedRoute path="/dashboard" component={Dashboard}/>
         </Switch>

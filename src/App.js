@@ -1,41 +1,17 @@
-import React, { Component } from 'react'; 
-import { Link } from 'react-router-dom'; 
- 
-import FormPropsTextFields from './components/TextField'; 
-
+import React from 'react'; 
+import { BrowserRouter } from 'react-router-dom'; 
+import Router from './Router';
+import ButtonAppBar from './components/AppNavBar'
 
 import './App.css';
 
-class MusicApp extends Component {
-  constructor(props){
-    super(props)
-
-    this.state = {
-      loggedIn: false,
-      signedUp: false
-    }
-  }
-
-  handleLogin = () =>{
-    if(this.state.loggedIn){
-      this.setState({loggedIn: false})
-    }else{
-      this.setState({loggedIn: true})
-    }
-  }
-
-  render(){
-    return (
-      <div className="App">
-          <div>
-              <Link to="/"> Welcome Page</Link>
-              <FormPropsTextFields/>
-              <Link to="/dashboard">Login</Link><br></br>
-              <Link to="/signup">Sign Up</Link>
-          </div>
-      </div>
-    )
-  }
+function MusicApp() {
+  return (
+    <BrowserRouter>
+      <ButtonAppBar/>
+      <Router />
+    </BrowserRouter>
+  )
 }
 
 export default MusicApp;
