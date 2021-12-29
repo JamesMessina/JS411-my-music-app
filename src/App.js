@@ -1,11 +1,8 @@
 import React, { Component } from 'react'; 
 import { Link } from 'react-router-dom'; 
-
-import ContaintedButtons from './components/Button'; 
+ 
 import FormPropsTextFields from './components/TextField'; 
-import Dashboard from './components/Dashboard'; 
-import Signup from './components/Signup'; 
-import SignupButton from './components/SignupButton'
+
 
 import './App.css';
 
