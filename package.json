@@ -1,6 +1,5 @@
 {
   "name": "my-music-app",
-  "homepage": "https://jamesmessina.github.io/JS411-my-music-app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
