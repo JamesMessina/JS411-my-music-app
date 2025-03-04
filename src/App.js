@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { BrowserRouter } from 'react-router-dom'; 
+import { HashRouter } from 'react-router-dom'; 
 import Router from './Router';
 import ButtonAppBar from './components/AppNavBar'
 
@@ -7,10 +7,10 @@ import './App.css';
 
 function MusicApp() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <ButtonAppBar/>
       <Router />
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 

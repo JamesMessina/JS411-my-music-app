@@ -2,6 +2,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router';
 
+
 //internal imports
 
 import Dashboard from './components/Dashboard';
@@ -37,6 +38,6 @@ const Router = () =>{
             <ProtectedRoute path="/dashboard" component={Dashboard}/>
         </Switch>
     )
-}
+};
 
 export default Router; 

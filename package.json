@@ -2,7 +2,7 @@
   "homepage": "https://jamesmessina.github.io/JS411-my-music-app/",
   "name": "my-music-app",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
